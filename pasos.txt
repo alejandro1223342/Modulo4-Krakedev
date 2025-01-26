@@ -7,3 +7,14 @@ ejecutar
 node app.js
 
 npm install body-parser
+
+
+crear proyecto
+create-expo-app contactos --template
+dependencias
+npm install @react-navigation/native react-native-screens react-native-safe-area-context @react-navigation/native-stack
+npm install @rneui/base  @rneui/themed
+
+
+npm install -g expo-cli
+npx expo-cli upgrade
