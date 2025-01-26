@@ -14,7 +14,12 @@ create-expo-app contactos --template
 dependencias
 npm install @react-navigation/native react-native-screens react-native-safe-area-context @react-navigation/native-stack
 npm install @rneui/base  @rneui/themed
+nox expo start
 
+
+npm install react-native-safe-area-context@^4.0.0
+npm install @rneui/base @rneui/themed
+npm install @react-navigation/native-stack
 
 npm install -g expo-cli
 npx expo-cli upgrade
