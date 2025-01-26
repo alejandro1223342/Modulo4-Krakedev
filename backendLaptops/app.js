@@ -20,8 +20,8 @@ app.use("/laptops", (request, response, next) => {
 app.get("/laptops", (request, response) => {
     const laptops = [
         { id: 1, marca: "Lenovo", procesador: "Inter core i5", memoria: "16GB",disco:"1TB" },
-        { id: 2, marca: "Lenovo", procesador: "Inter core i5", memoria: "16GB",disco:"1TB" },
-        { id: 3, marca: "Lenovo", procesador: "Inter core i5", memoria: "16GB",disco:"1TB" }
+        { id: 2, marca: "HP", procesador: "Inter core i5", memoria: "16GB",disco:"1TB" },
+        { id: 3, marca: "DELL", procesador: "Inter core i5", memoria: "16GB",disco:"1TB" }
 
     ];
     console.log("ingresa a get")
