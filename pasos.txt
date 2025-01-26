@@ -1,0 +1,9 @@
+Dentro de la carpeta donde esta el proyecto
+npm init --y
+npm install express
+
+
+ejecutar 
+node app.js
+
+npm install body-parser

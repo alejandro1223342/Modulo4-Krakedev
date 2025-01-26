@@ -33,7 +33,7 @@ app.get("/contactos", (request, response) => {
 });
 
 app.post("/contactos", (request, response) => {
-    request.body="1";
+    request.body.id="1";
     response.send(request.body);
 });
 
