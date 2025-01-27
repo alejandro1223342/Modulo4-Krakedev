@@ -2,17 +2,26 @@ import { View, Text, StyleSheet,Alert } from "react-native"
 import { Input, Button } from '@rneui/base'
 import { useState } from "react"
 import {saveLaptopRest} from '../rest_laptops/laptops'
-export const LaptopsForm = ({navigation}) => {
+import {updateLaptopRest} from '../rest_laptops/laptops'
 
-    const [marca, setMarca] = useState("");
-    const [procesador, setProcesador] = useState("");
-    const [memoria, setMemoria] = useState("");
-    const [disco, setDisco] = useState("");
+export const LaptopsForm = ({navigation,route}) => {
+
+    let laptopRetrieved = route.params.laptopsParam;
+   let isNew = true;
+    if(laptopRetrieved!=null){
+        isNew=false;
+    }
+    
+    const [marca, setMarca] = useState(isNew?null:laptopRetrieved.marca);
+    const [procesador, setProcesador] = useState(isNew?null:laptopRetrieved.procesador);
+    const [memoria, setMemoria] = useState(isNew?null:laptopRetrieved.memoria);
+    const [disco, setDisco] = useState(isNew?null:laptopRetrieved.disco);
     const showMessage = () => {
-        Alert.alert("Confirmacion","Se creo la laptop")
+        Alert.alert("Confirmacion",isNew?"Se creo la laptop":"Contacto Actualizado")
+        navigation.goBack();
     }
     const saveLaptop = () =>{
-        navigation.goBack();
+
         saveLaptopRest(
             {
                 marca:marca,
@@ -23,6 +32,18 @@ export const LaptopsForm = ({navigation}) => {
             //Segundo Parametro
             showMessage
         );
+       
+    }
+    const updateLaptop = ()=>{
+        console.log("actualizando contacto"),
+        {
+            id:laptopRetrieved.id,
+            marca:marca,
+            procesador:procesador,
+            memoria:memoria,
+            disco:disco
+        },
+        updateLaptopRest({},showMessage)
     }
     return <View style={styles.container}>
         <Input
@@ -53,7 +74,7 @@ export const LaptopsForm = ({navigation}) => {
         />
         <Button
         title="Guardar"
-        onPress={saveLaptop}
+        onPress={isNew?saveLaptop:updateLaptop}
         />
     </View>
 }

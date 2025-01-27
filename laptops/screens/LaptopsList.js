@@ -1,20 +1,23 @@
-import { View, Text, StyleSheet, FlatList } from "react-native"
+import { View, Text, StyleSheet, FlatList, TouchableHighlight } from "react-native"
 import { Button, ListItem } from "@rneui/base"
 import { getAllLaptops } from "../rest_laptops/laptops"
 import { useState } from "react"
 import { FAB } from '@rneui/themed';
 
-export const LaptopsList = ({navigation}) => {
+export const LaptopsList = ({ navigation }) => {
 
     const [laptopsList, setLaptopsList] = useState([]);
 
     const LaptopItem = ({ laptops }) => {
-        return <ListItem>
-            <ListItem.Content>
-                <ListItem.Title>{laptops.marca} {laptops.procesador}</ListItem.Title>
-                <ListItem.Subtitle>{laptops.memoria}</ListItem.Subtitle>
-            </ListItem.Content>
-        </ListItem>
+        return <TouchableHighlight onPress={() => {
+            navigation.navigate("LaptopsFormNav",{laptopsParam:laptops});
+        }}>
+            <ListItem>
+                <ListItem.Content>
+                    <ListItem.Title>{laptops.marca} {laptops.procesador}</ListItem.Title>
+                    <ListItem.Subtitle>{laptops.memoria}</ListItem.Subtitle>
+                </ListItem.Content>
+            </ListItem></TouchableHighlight>
     }
 
     const fnRefreshList = (laptops) => {
@@ -37,10 +40,10 @@ export const LaptopsList = ({navigation}) => {
             keyExtractor={(item) => item.id.toString()} // Añadir keyExtractor
 
         />
-        <FAB 
+        <FAB
             title="+"
-            onPress={()=>{
-            navigation.navigate("LaptopsFormNav")
+            onPress={() => {
+                navigation.navigate("LaptopsFormNav",{})
             }}
         />
     </View>
