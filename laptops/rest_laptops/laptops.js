@@ -58,7 +58,7 @@ export const updateLaptopRest = (laptops,fnShowMessage) =>{
 
     fetch(
         URL+"laptops/"+laptops.id,config
-    ).then(response=> response.json)
+    ).then(response=> response.json())
     .then((body) => {
         fnShowMessage("laptop Actualizada");
         console.log(body)

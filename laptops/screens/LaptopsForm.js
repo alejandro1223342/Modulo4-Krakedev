@@ -36,16 +36,19 @@ export const LaptopsForm = ({ navigation, route }) => {
 
     }
     const updateLaptop = () => {
-        console.log("actualizando contacto"),
-        {
-            id: laptopRetrieved.id,
-            marca: marca,
-            procesador: procesador,
-            memoria: memoria,
-            disco: disco
-        },
-            updateLaptopRest({}, showMessage)
-    }
+        console.log("actualizando laptop");
+        updateLaptopRest(
+            {
+                id: laptopRetrieved.id,
+                marca: marca,
+                procesador: procesador,
+                memoria: memoria,
+                disco: disco
+            },
+            showMessage
+        );
+    };
+    
 
     const confirmDelete = () => {
         Alert.alert("Confirmacion", "Esta seguro de que quiere eliminar", [{
